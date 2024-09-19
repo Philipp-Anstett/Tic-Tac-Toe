@@ -1,0 +1,98 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+.container {
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+#status {
+  margin-bottom: 20px;
+  font-size: 1.2em;
+}
+
+#game-board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  position: relative;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+.cell:nth-child(3n) {
+  border-right: none;
+}
+
+.cell:nth-last-child(-n + 3) {
+  border-bottom: none;
+}
+
+svg {
+  width: 70%; /* Passt die Größe der SVGs an */
+  height: 70%; /* Passt die Größe der SVGs an */
+  max-width: 60px; /* Maximale Breite */
+  max-height: 60px; /* Maximale Höhe */
+}
+
+.x path {
+  stroke: red;
+  stroke-width: 8;
+}
+
+.circle {
+  stroke: blue;
+  fill: none;
+  stroke-width: 8;
+}
+
+svg path,
+svg circle {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: draw 0.5s forwards ease-in-out;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.line {
+  position: absolute;
+  background-color: transparent;
+  height: 8px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
